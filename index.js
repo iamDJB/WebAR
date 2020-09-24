@@ -48,7 +48,7 @@ function init(){
 
     arMarker[0] = new THREEx.ArMarkerControls(arContext, camera, {
         type : 'pattern',
-        patternUrl : './assets/data/pattern-jaftea.patt',
+        patternUrl : './assets/data/jaftea.patt',
         changeMatrixMode: 'cameraTransformMatrix'
     });
 
