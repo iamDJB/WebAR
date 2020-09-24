@@ -16,7 +16,7 @@
             <a-asset-item id='stone-mtl' src='assets/models/Stone.mtl'></a-asset-item> -->
             <!-- Video -->
             <!-- <video id='video-mp4' autoplay loop='true' muted='true' src='/assets/videos/sample.mp4'></video> -->
-            <video id='video-mp4' crossOrigin='anonymous' type='video/mp4' autoplay loop='true' src='/assets/videos/sample.mp4' playsinline webkit-playsinline controls></video>
+            <video id='video-mp4' crossOrigin='anonymous' type='video/mp4' autoplay loop='true' src='assets/videos/sample.mp4' playsinline webkit-playsinline controls></video>
             <video src="https://cors-anywhere.herokuapp.com/https://www.w3schools.com/html/mov_bbb.mp4" preload="auto" id="vid" response-type="arraybuffer" loop crossorigin webkit-playsinline autoplay muted playsinline></video>
             <!-- <video id='video-mp4' autoplay loop='true' muted='true' src='https://ia800701.us.archive.org/26/items/SampleVideo1280x7205mb/SampleVideo_1280x720_5mb.mp4'></video> -->
         </a-assets>
@@ -34,7 +34,7 @@
                 <a-entity>
                     <!-- <a-video type='video/mp4' id='video-mp4' autoplay='false' loop='true' src='assets/videos/sample.mp4' webkit-playsinline></a-video> -->
                     <!-- <a-video position='0 0.5 0' src='#video-mp4' rotation='90 180 0' autoplay='true' loop='true'></a-video> -->
-                    <a-video src='#vid' position='0 0.2 0' play='true'></a-video>
+                    <a-video src='#vid' position='0 0.2 0' rotation="90 0 0" play='true'></a-video>
                     <!-- <a-video src='#video-mp4' position='0 0.2 0' rotation='270 0 0' play='true'></a-video> -->
                 </a-entity>
 
@@ -91,11 +91,11 @@
             window.onload = function() {
                 var v = document.querySelector('#vid');
                 v.play();
-                if (v.paused == true) {
-                    v.play();
-                } else {
-                    v.pause();
-                }
+                // if (v.paused == true) {
+                //     v.play();
+                // } else {
+                //     v.pause();
+                // }
             };
         </script>
     
