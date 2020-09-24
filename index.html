@@ -1,27 +1,19 @@
-<script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
-<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-<body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs='sourceType: webcam;'>
-  <!-- <a-scene arjs='detectionMode: mono_and_matrix; matrixCodeType: 3x3;'> -->
-  <!-- Note that matrixCodeType can be any one of [3x3, 3x3_HAMMING63, 3x3_PARITY65, 4x4, 4x4_BCH_13_9_3, 4x4_BCH_13_5_5] -->
-    <!-- handle marker with your own pattern -->
-    <a-marker type='pattern' url='https://github.com/iamDJB/WebAR/blob/master/pattern-jaftea.patt'>
-    <!-- <a-marker type='pattern' url='pattern-jaftea.patt'></a-marker> -->
-    <!-- <a-marker type='pattern' patternUrl='C:/Users/dylan/Documents/GitHub/WebAR/pattern-jaftea.patt'></a-marker> -->
-      <a-box position='0 0.5 0' material='color: red;'></a-box>
-    </a-marker>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> simple ar.js </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.min.js"></script>        
+        <script src="https://jeromeetienne.github.io/AR.js/three.js/build/ar.min.js"></script>
 
-    <!-- handle marker with hiro preset -->
-    <a-marker preset='hiro'>
-      <a-box position='0 0.5 0' material='color: green;'></a-box>
-    </a-marker>
+    </head>
+    <body>
 
-    <!-- handle barcode marker -->
-    <a-marker type='barcode' value='5'>
-      <a-box position='0 0.5 0' material='color: blue;'></a-box>
-    </a-marker>
+        <div id="container"></div>
 
-    <!-- add a simple camera -->
-    <a-entity camera></a-entity>
-  </a-scene>
-</body>
+        <script src="index.js"></script>
+        
+    </body>
+</html>
