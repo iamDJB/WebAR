@@ -1,23 +1,29 @@
 <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
 <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 <body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs='sourceType: webcam;'>
+  <a-scene embedded arjs='sourceType: webcam; trackingMethod: best;'>
   <!-- <a-scene arjs='detectionMode: mono_and_matrix; matrixCodeType: 3x3;'> -->
   <!-- Note that matrixCodeType can be any one of [3x3, 3x3_HAMMING63, 3x3_PARITY65, 4x4, 4x4_BCH_13_9_3, 4x4_BCH_13_5_5] -->
 
   <!-- Asset management system -->
     <a-assets>
         <!-- Stone man model -->
-        <a-asset-item id='stone-obj' src='./assets/models/Stone.obj'></a-asset-item>
-        <a-asset-item id='stone-mtl' src='./assets/models/Stone.mtl'></a-asset-item>
+        <a-asset-item id='stone-obj' src='assets/models/Stone.obj'></a-asset-item>
+        <a-asset-item id='stone-mtl' src='assets/models/Stone.mtl'></a-asset-item>
+        <!-- Video -->
+        <a-asset-item id='video-mp4' src='assets/videos/sample.mp4'></a-asset-item>
     </a-assets>
 
     <!-- handle marker with your own pattern -->
     <a-marker type='pattern' url='./assets/data/jaftea.patt'>
     <!-- <a-marker type='pattern' url='pattern-jaftea.patt'></a-marker> -->
     <!-- <a-marker type='pattern' patternUrl='C:/Users/dylan/Documents/GitHub/WebAR/pattern-jaftea.patt'></a-marker> -->
-      <a-box position='0 0.5 0' material='color: red;'></a-box>
+      <!-- <a-box position='0 0.5 0' material='color: red;'></a-box> -->
       <!-- <a-entity obj-model='obj: #stone-obj; mtl: #stone-mtl' position='0 0.5 0'></a-entity> -->
+      <a-entity>
+          <!-- <a-video type='video/mp4' id='video-mp4' autoplay='false' loop='true' -->
+        <a-video position='0 0.2 0' src='#video-mp4' rotation='90 180 0'></a-video>
+      </a-entity>
     </a-marker>
 
     <!-- handle marker with hiro preset -->
