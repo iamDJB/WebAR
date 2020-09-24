@@ -13,7 +13,8 @@
             <!-- <a-asset-item id='stone-obj' src='assets/models/Stone.obj'></a-asset-item>
             <a-asset-item id='stone-mtl' src='assets/models/Stone.mtl'></a-asset-item> -->
             <!-- Video -->
-            <video id='video-mp4' autoplay loop='true' muted='true' src='/assets/videos/sample.mp4'></video>
+            <!-- <video id='video-mp4' autoplay loop='true' muted='true' src='/assets/videos/sample.mp4'></video> -->
+            <video id='video-mp4' crossOrigin='anonymous' type='video/mp4' autoplay loop='true' src='/assets/videos/sample.mp4' playsinline webkit-playsinline controls></video>
             <!-- <video id='video-mp4' autoplay loop='true' muted='true' src='https://ia800701.us.archive.org/26/items/SampleVideo1280x7205mb/SampleVideo_1280x720_5mb.mp4'></video> -->
         </a-assets>
     
@@ -54,7 +55,12 @@
             window.addEventListener('click', function(){
                 var v = document.querySelector('#video-mp4');
                 v.play();
-            });
+                if (v.paused == true) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            }, false);
         </script>
     
     </body>
