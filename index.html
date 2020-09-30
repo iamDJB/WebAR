@@ -5,26 +5,6 @@
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-
-    <!-- Add an additional script to handle video playback -->
-    <script>
-        AFRAME.registerComponent('markerHandler', {
-            init: function() {
-                // Setup the tick throttling. This will check if the marker is active every 500ms.
-                this.tick = AFRAME.utils.throttleTick(this.tick, 500, this);
-            },
-
-            tick: function(t, dt) {
-                // Check if the marker is visible
-                if (document.querySelector("#jafteaMarker").object3D.visible == true && playing == false) {
-
-                    // Play the video
-                    playing = true;
-                }
-                else { playing = false; }
-            }
-        });
-    </script>
     
     <!-- Start body -->
     <body style="margin : 0px; overflow: hidden;">
@@ -46,7 +26,7 @@
         <!-- Note that matrixCodeType can be any one of [3x3, 3x3_HAMMING63, 3x3_PARITY65, 4x4, 4x4_BCH_13_9_3, 4x4_BCH_13_5_5] -->        
 
             <!-- Handle a marker with custom pattern -->
-            <a-marker type="pattern" url="./assets/data/jaftea.patt" id="jafteaMarker">
+            <a-marker type="pattern" url="./assets/data/jaftea.patt">
                 <!-- Video -->
                 <a-entity>                    
                     <!-- <a-video src="#vid" position="0 0 0" rotation="-45 0 90" scale="0.95 0.95 0.95" play="true"></a-video> -->
@@ -75,7 +55,37 @@
 
             <!-- Add a simple camera -->
             <a-entity camera></a-entity>
-        </a-scene>    
+        </a-scene>  
+        
+        <!-- Add an additional script to handle video playback -->
+    <script>
+        var ar_video
+        AFRAME.registerComponent('markerHandler', {
+            init: function() {
+                // Setup the tick throttling. This will check if the marker is active every 500ms.
+                this.tick = AFRAME.utils.throttleTick(this.tick, 500, this);
+            },
+
+            tick: function(t, dt) {
+                // Check if the marker is visible
+                if (document.querySelector("#jafteaMarker").object3D.visible == true && playing == false) {
+                    // Marker is visible
+                    ar_video = document.querySelector("#vid");
+
+                    // Toggle video playback on click
+                    ar_video.addEventListener("click", function () { ToggleVideo(); });
+
+                    // Play the video
+                    playing = true;
+                }
+            }
+        });
+
+        function ToggleVideo() {
+            if (ar_video.paused) { ar_video.play(); }
+            else { ar_video.pause(); }
+        };
+    </script>
     
     </body>
 </html>
