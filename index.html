@@ -5,6 +5,36 @@
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+
+    <!-- Add an additional script to handle video playback -->
+    <script>
+        var ar_video
+        AFRAME.registerComponent('markerHandler', {
+            init: function() {
+                // Setup the tick throttling. This will check if the marker is active every 500ms.
+                this.tick = AFRAME.utils.throttleTick(this.tick, 500, this);
+            },
+
+            tick: function(t, dt) {
+                // Check if the marker is visible
+                if (document.querySelector("#jafteaMarker").object3D.visible == true && playing == false) {
+                    // Marker is visible
+                    ar_video = document.querySelector("#vid");
+
+                    // Toggle video playback on click
+                    ar_video.addEventListener("click", function () { ToggleVideo(); });
+
+                    // Play the video
+                    playing = true;
+                }
+            }
+        });
+
+        function ToggleVideo() {
+            if (ar_video.paused) { ar_video.play(); }
+            else { ar_video.pause(); }
+        };
+    </script>
     
     <!-- Start body -->
     <body style="margin : 0px; overflow: hidden;">
@@ -13,7 +43,8 @@
         <a-assets>            
             <!-- Video -->            
             <!-- <video src="assets/videos/jaftea-4s.mp4" preload="auto" id="vid" response-type="arraybuffer" loop crossorigin webkit-playsinline autoplay muted playsinline></video> -->
-            <video src="assets/videos/jaftea-promo.mp4" preload="auto" id="vid" response-type="arraybuffer" loop crossorigin webkit-playsinline autoplay playsinline></video>        
+            <!-- <video src="assets/videos/jaftea-promo.mp4" preload="auto" id="vid" response-type="arraybuffer" loop crossorigin webkit-playsinline autoplay playsinline></video>     -->
+            <video src="assets/videos/jaftea-promo.mp4" preload="auto" id="vid" response-type="arraybuffer" crossorigin webkit-playsinline autoplay playsinline></video>    
             <!-- Mug model -->
             <a-asset-item id="mug-obj" src="assets/models/mug.obj"></a-asset-item>
         </a-assets>
@@ -28,7 +59,8 @@
                 <!-- Video -->
                 <a-entity>                    
                     <!-- <a-video src="#vid" position="0 0 0" rotation="-45 0 90" scale="0.95 0.95 0.95" play="true"></a-video> -->
-                    <a-video src="#vid" position="0 0 0" rotation="-45 0 0" scale="0.95 0.95 0.95" play="true"></a-video>
+                    <!-- <a-video src="#vid" position="0 0 0" rotation="-45 0 0" scale="0.95 0.95 0.95" play="false"></a-video> -->
+                    <a-video src="#vid" position="0 0 0" rotation="-45 0 0" play="false"></a-video>
                 </a-entity>
                 <!-- Mug -->
                 <!-- <a-entity obj-model="obj: #mug-obj" position="0 1 0"></a-entity> -->
@@ -52,20 +84,7 @@
 
             <!-- Add a simple camera -->
             <a-entity camera></a-entity>
-        </a-scene>
-        
-        <!-- Add an additional script to handle video playback -->
-        <script>
-            window.onload = function() {
-                var v = document.querySelector("#vid");
-                v.play();
-                // if (v.paused == true) {
-                //     v.play();
-                // } else {
-                //     v.pause();
-                // }
-            };
-        </script>
+        </a-scene>    
     
     </body>
 </html>
