@@ -13,7 +13,7 @@
         <a-assets>            
             <!-- Video -->            
             <!-- <video src="assets/videos/jaftea-4s.mp4" preload="auto" id="vid" response-type="arraybuffer" loop crossorigin webkit-playsinline autoplay muted playsinline></video> -->
-            <video src="assets/videos/jaftea-promo.mp4" preload="auto" id="vid" response-type="arraybuffer" loop crossorigin webkit-playsinline autoplay muted playsinline></video>        
+            <video src="assets/videos/jaftea-promo.mp4" preload="auto" id="vid" response-type="arraybuffer" loop crossorigin webkit-playsinline autoplay playsinline></video>        
             <!-- Mug model -->
             <a-asset-item id="mug-obj" src="assets/models/mug.obj"></a-asset-item>
         </a-assets>
@@ -27,7 +27,8 @@
             <a-marker type="pattern" url="./assets/data/jaftea.patt">
                 <!-- Video -->
                 <a-entity>                    
-                    <a-video src="#vid" position="0 0 0" rotation="-45 0 90" scale="0.95 0.95 0.95" play="true"></a-video>
+                    <!-- <a-video src="#vid" position="0 0 0" rotation="-45 0 90" scale="0.95 0.95 0.95" play="true"></a-video> -->
+                    <a-video src="#vid" position="0 0 0" rotation="-45 0 0" scale="0.95 0.95 0.95" play="true"></a-video>
                 </a-entity>
                 <!-- Mug -->
                 <!-- <a-entity obj-model="obj: #mug-obj" position="0 1 0"></a-entity> -->
